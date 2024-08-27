@@ -13,13 +13,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
+/*@EnableSwagger2*/
 //@OpenAPIDefinition(info = @Info(title = "Order Service API", version = "3.0.0", description = "API for managing orders"))
 public class OrderServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OrderServiceApplication.class, args);
 	}
-	@Bean
+	/*@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)).paths(PathSelectors.any())
@@ -30,5 +30,5 @@ public class OrderServiceApplication {
 	public ApiInfo apiInfo() {
 		final ApiInfoBuilder builder = new ApiInfoBuilder();
 		return builder.build();
-	}
+	}*/
 }

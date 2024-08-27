@@ -15,11 +15,11 @@ import java.util.List;
 public class OrderServiceController {
     @Autowired
     OrderServiceRepository repo;
-    @ApiIgnore
+    /*@ApiIgnore
     @RequestMapping(value = "/")
     public void redirect(HttpServletResponse response) throws IOException {
         response.sendRedirect("/swagger-ui.html");
-    }
+    }*/
     @GetMapping("/posts")
     public List<OrderServiceData> getAllPosts(){
         return repo.findAll();
