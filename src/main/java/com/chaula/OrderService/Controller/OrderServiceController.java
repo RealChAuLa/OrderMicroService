@@ -1,5 +1,6 @@
 package com.chaula.OrderService.Controller;
 
+import com.chaula.OrderService.Data.CustomOrderServiceRepository;
 import com.chaula.OrderService.Data.OrderServiceData;
 import com.chaula.OrderService.Data.OrderServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,14 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 public class OrderServiceController {
     @Autowired
     OrderServiceRepository repo;
+
+    @Autowired
+    CustomOrderServiceRepository customRepo;
     @ApiIgnore
     @RequestMapping(value = "/")
     public void redirect(HttpServletResponse response) throws IOException {
@@ -27,5 +32,10 @@ public class OrderServiceController {
     @PostMapping("/post")
     public OrderServiceData createPost(@RequestBody OrderServiceData post){
         return repo.save(post);
+    }
+    // Search by username using MongoDB pipeline
+    @GetMapping("/posts/username/{username}")
+    public List<OrderServiceData> getPostsByUsername(@PathVariable String username) {
+        return customRepo.findByUsernameUsingPipeline(username);
     }
 }

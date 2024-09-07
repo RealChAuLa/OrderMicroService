@@ -5,19 +5,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Orders")
 public class OrderServiceData {
-    @Id
-    private String order_id;
     private String username;
     private int cloth_id;
     private int quantity;
     private double total;
     public OrderServiceData() {
-    }
-    public String getOrder_id() {
-        return order_id;
-    }
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
     }
     public String getUsername() {
         return username;
@@ -43,11 +35,11 @@ public class OrderServiceData {
     public void setTotal(double total) {
         this.total = total;
     }
+
     @Override
     public String toString() {
         return "OrderServiceData{" +
-                "order_id=" + order_id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", cloth_id=" + cloth_id +
                 ", quantity=" + quantity +
                 ", total=" + total +
