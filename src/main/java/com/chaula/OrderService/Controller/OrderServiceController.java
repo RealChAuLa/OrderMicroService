@@ -3,6 +3,7 @@ package com.chaula.OrderService.Controller;
 import com.chaula.OrderService.Data.CustomOrderServiceRepository;
 import com.chaula.OrderService.Data.OrderServiceData;
 import com.chaula.OrderService.Data.OrderServiceRepository;
+import com.chaula.OrderService.Data.TopSalesData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -25,17 +26,23 @@ public class OrderServiceController {
     public void redirect(HttpServletResponse response) throws IOException {
         response.sendRedirect("/swagger-ui.html");
     }
-    @GetMapping("/posts")
+    @GetMapping("/orders")
     public List<OrderServiceData> getAllPosts(){
         return repo.findAll();
     }
-    @PostMapping("/post")
+    @PostMapping("/order")
     public OrderServiceData createPost(@RequestBody OrderServiceData post){
         return repo.save(post);
     }
     // Search by username using MongoDB pipeline
-    @GetMapping("/posts/username/{username}")
+    @GetMapping("/orders/username/{username}")
     public List<OrderServiceData> getPostsByUsername(@PathVariable String username) {
         return customRepo.findByUsernameUsingPipeline(username);
     }
+    //get 4 most sales cloth_id
+    @GetMapping("/orders/bestsales")
+    public List<TopSalesData> getTop4SalesClothId() {
+        return repo.findTop4ClothIdByTotalQuantity();
+    }
+
 }
