@@ -69,3 +69,7 @@ Represents the sales statistics for products. (Detailed structure to be implemen
 4. Run the application:
    ```sh
    mvn spring-boot:run
+
+
+## License
+  This project is licensed under the MIT License.
